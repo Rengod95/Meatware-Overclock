@@ -1,0 +1,7 @@
+interface:
+  display_name: "Meatware Overclock"
+  short_description: "Catch up with the agent while it keeps shipping"
+  default_prompt: "Use $meatware-overclock to keep implementation moving while maintaining a level-calibrated guide and learning journal."
+
+policy:
+  allow_implicit_invocation: false
