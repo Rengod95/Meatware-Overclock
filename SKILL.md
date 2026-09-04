@@ -21,8 +21,10 @@ Produce technical guides that a reader can understand as connected explanations 
 - Read `references/calibration.md` before establishing or revising reader assumptions.
 - Read `references/information-architecture.md` before outlining a long guide, chapter sequence, or index.
 - Read `references/explanation-method.md` before explaining foundational or consequential technical concepts.
+- Read `references/schema-example.md` only when a schema is consequential to the requested guide and a worked application of the generic concept method would help.
 - Read `references/writing-contract.md` before creating or substantially revising reader-facing material.
 - Read `references/quality-rubric.md` before claiming the material is complete.
+- Read `references/research-foundations.md` only when maintaining this skill or reviewing why a writing rule exists; it is not required during ordinary guide production.
 - Read `references/master-prompt.md` only when the user requests the standalone prompt or its rules need inspection.
 
 ## Process
@@ -38,11 +40,11 @@ Produce technical guides that a reader can understand as connected explanations 
 6. Explain every consequential introduced concept at the depth required by the reader model. Apply the concept unit in `references/explanation-method.md`: what it is, why it exists and matters, how it works generally, how this project uses or adapts it, which prerequisites it depends on, and what it does not guarantee.
 7. Use realistic examples and verified project traces. Label simplified, actual, and abridged actual code. Put the observation point before code and the result, reasoning, and project connection after it.
 8. Use information types as authoring tools, not as a visible matrix the reader must decode. Keep exact lookup facts precise; weave context, mechanism, rationale, procedure, diagnosis, and examples together only where the reader's question benefits.
-9. Update an existing stable guide when authorized. Create a work journal only when the user requests one, the repository already requires one, or preserving decision provenance has clear value. Do not create a journal merely because this skill is active.
+9. Update an existing stable guide when authorized. Create a work journal only when the user requests one or the repository already requires one. Do not create a journal merely because this skill is active or because provenance might be useful.
 10. Verify software with the repository's gates and verify the guide separately with `references/quality-rubric.md`. Report source conflicts, provisional reader assumptions, and unverified examples plainly.
 
-## Default Artifact
+## Artifact Placement
 
-When the repository has no better convention and guide creation is authorized, prefer `docs/learning/README.md` for the current system. Choose a different path or document shape when the user's purpose, existing information architecture, or maintenance model makes it more appropriate.
+When guide creation is authorized, follow the user's destination and the repository's existing documentation architecture. If neither establishes a destination, choose a location only after inspecting repository conventions; do not impose a universal `docs/learning/README.md` path.
 
 When no repository exists or writes are not authorized, provide the requested explanation in chat or in the user-selected artifact without creating repository files.

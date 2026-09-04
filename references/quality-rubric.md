@@ -86,11 +86,12 @@ For each consequential introduced concept:
 ## Gate 9 Artifact and Scope
 
 - [ ] The stable guide describes the current system rather than narrating every edit.
-- [ ] A work journal exists only because the user, repository, or provenance need justifies it.
+- [ ] A work journal exists only because the user requested it or the repository requires it.
 - [ ] Durable explanations are not duplicated across guide, journal, and reference.
 - [ ] Documentation work did not expand the underlying task's authority.
 - [ ] Software and documentation were verified separately.
 - [ ] The handoff identifies changed guide artifacts, the main model now available, and remaining uncertainty.
+- [ ] A small mechanical change did not trigger a new guide, journal, tutorial, or inflated learning claim when the existing model remained current.
 
 ## Reader Outcome Spot Checks
 

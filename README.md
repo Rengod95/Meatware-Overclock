@@ -21,15 +21,18 @@ The skill remains explicit-only through `agents/openai.yaml`.
 - `SKILL.md`: activation boundary, process, and progressive reference routing.
 - `references/calibration.md`: per-concept reader model and recursive prerequisite calibration.
 - `references/information-architecture.md`: whole-guide, chapter, paragraph, and index design.
-- `references/explanation-method.md`: detailed what–why–how concept method and schema pattern.
+- `references/explanation-method.md`: detailed, technology-neutral what–why–how concept method.
+- `references/schema-example.md`: optional worked application of the concept method when schema is actually relevant.
 - `references/writing-contract.md`: reader-facing prose, code, terminology, structure, and authority rules.
 - `references/quality-rubric.md`: source, explanation, navigation, table, prose, privacy, and completion gates.
+- `references/research-foundations.md`: maintenance-only provenance for the adopted writing rules.
 - `references/master-prompt.md`: standalone project-neutral version of the behavior contract.
+- `tests/scenarios.md`: semantic pressure scenarios for future independent behavioral evaluation.
 - `agents/openai.yaml`: UI metadata and explicit-only invocation policy.
 
-## Default Artifact
+## Artifact Placement
 
-When a repository has no better convention and guide creation is authorized, the default stable guide is `docs/learning/README.md`. A work journal is optional and is created only when the user, repository, or decision-provenance need justifies it.
+Follow the user's destination and the repository's existing documentation architecture. Do not impose a universal guide path. A work journal is created only when the user requests it or the repository already requires it.
 
 ## Validation
 

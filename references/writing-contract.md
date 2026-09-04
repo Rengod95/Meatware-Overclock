@@ -134,7 +134,7 @@ Use a diagram only when hierarchy, direction, state, sequence, or ownership beco
 
 The stable guide describes the current system. It should not narrate every edit or become a release log.
 
-A work journal is optional. Create or update it only when requested, established by repository convention, or useful for preserving design provenance. If used, keep transient investigation and decisions there, promote durable explanations to the stable guide, and link rather than duplicate.
+A work journal is optional. Create or update it only when requested or established by repository convention. If used, keep transient investigation and decisions there, promote durable explanations to the stable guide, and link rather than duplicate.
 
 Do not add quizzes, recall questions, exercises, or prescribed next lessons unless the user requested a tutorial, curriculum, or practice material. A polished guide may end with boundaries, implications, or lookup links without adopting a tutor voice.
 
@@ -151,15 +151,18 @@ Use explicit language for differences among:
 
 When sources disagree, identify the exact claims and locations, assess authority and recency, explain current versus intended behavior, and request a decision only if the authorized task cannot resolve the conflict.
 
-## Final Editorial Pass
+## Edit from Structure Down to Sentences
 
-Revise the draft until:
+Revise in this order so polished sentences do not hide a structural defect:
 
-- the introduction, headings, and paragraph openings tell one coherent story;
-- the reader can trace the representative case without consulting a file tree;
-- every consequential concept has adequate what–why–how coverage and prerequisite closure;
-- general concepts and project-specific behavior are connected;
-- code and diagrams have observation guidance and interpretation;
-- tables perform real comparison or lookup work;
-- exact facts remain easy to find;
-- no section reads as a pasted spec, changelog, or tutoring script unless that is the requested form.
+1. **Promise:** every major section contributes to the document outcome and respects scope.
+2. **Whole-guide arc:** the problem, predictive model, and representative case precede implementation inventory.
+3. **Concept dependency:** prerequisites appear before the ideas that depend on them.
+4. **Chapter logic:** each chapter resolves one question and reconnects to the whole.
+5. **Causality:** what, why, how, general convention, and project adaptation form one explanation rather than disconnected fragments.
+6. **Evidence:** code, tests, governing sources, and examples support the claims made.
+7. **Paragraph logic:** openings, transitions, and conclusions form a coherent argument.
+8. **Form:** code, lists, tables, diagrams, and reference blocks perform a reader task that prose would handle worse.
+9. **Reader paths:** a less-prepared reader can find the missing bridge, while a prepared reader can skip familiar foundations without losing the project-specific model.
+
+Finish only when exact facts remain easy to find and no section reads as a pasted spec, changelog, or tutoring script unless that is the requested form.

@@ -19,7 +19,7 @@ Track only the dimensions that affect the current document:
 
 Express the result as documentation needs, for example:
 
-> Reader assumption: can follow TypeScript control flow and interfaces, is new to schema-driven validation, needs an overview before exact module details, and will maintain the validation boundary.
+> Reader assumption: can follow TypeScript control flow and interfaces, is new to runtime validation boundaries, needs an overview before exact module details, and will maintain the input pipeline.
 
 Do not write labels such as “junior,” “weak at architecture,” or “non-technical.”
 
@@ -42,7 +42,7 @@ Useful early questions include:
 
 Later, ask only at a genuine ambiguity in the concept map:
 
-- “여기서 `schema` 자체보다 validator가 schema를 읽어 진단을 만드는 과정이 더 낯선가요?”
+- “여기서 validation 규칙 자체보다 입력 경계가 실패를 진단으로 바꾸는 과정이 더 낯선가요?”
 - “이 오류를 호출 순서 문제로 보시나요, 데이터 경계 문제로 보시나요? 답에 따라 앞부분의 모델을 다르게 보강하겠습니다.”
 
 Do not fill a question quota. A demonstrated answer may settle several dimensions, and a long questionnaire often measures patience rather than understanding.
@@ -64,16 +64,15 @@ Calibrate at the concept level while outlining and drafting:
 
 This recursion prevents a common failure: carefully explaining an easy surface term while silently relying on a harder concept underneath it.
 
-### Example prerequisite chain for schema
+### Example prerequisite chain for a validation boundary
 
 The chain may be:
 
-1. A runtime value has a shape and value kinds.
-2. A program can express allowed shapes and constraints as data.
-3. A schema is such a machine-readable rule description.
-4. A validator interprets the schema and compares an input against it.
-5. Validation produces a result or structured diagnostics.
-6. A project may use the same schema for additional jobs such as editor support, code generation, or compatibility checks.
+1. Runtime input has a representation, value kinds, and a source with a particular trust level.
+2. A boundary defines conditions that input must satisfy before downstream code may rely on it.
+3. A responsible component evaluates those conditions against the real input.
+4. Evaluation produces an accepted value, rejection, or structured diagnostics.
+5. Later stages may perform different checks because structural acceptance does not prove every domain invariant.
 
 Do not teach every step automatically. Expand only the steps marked `bridge` or `foundation` for this reader and this project.
 
@@ -100,6 +99,10 @@ Treat the guide itself as a diagnostic surface. Recalibrate when:
 - a domain change introduces a new prerequisite graph.
 
 Adjust the affected concept and its dependents, not the entire document. Keep the voice and terminology consistent after the change.
+
+Recalibrate at meaningful transitions rather than after every paragraph. Useful checkpoints include the first complete concept unit, the first end-to-end representative trace, a major domain or architecture boundary, or direct reader feedback that reveals a missing relationship. Compare old evidence, new evidence, and the resulting document change; do not rewrite the whole reader model from one isolated reaction.
+
+Calibration is sufficient when the reader outcome is clear, each consequential concept has a provisional prerequisite depth, the first complete section demonstrates an appropriate density and terminology style, and no available evidence contradicts those assumptions. At that point, stop asking and write. Reopen only the affected concept when later evidence creates a real mismatch.
 
 ## Privacy and Persistence
 
