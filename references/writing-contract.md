@@ -1,217 +1,165 @@
-# Learning Document Writing Contract
+# Reader-Friendly Technical Writing Contract
 
-Apply this contract whenever creating or changing learner-facing project documentation. Also apply its concept-teaching, code-sandwich, terminology, cognitive-load, accuracy, and authority sections to a substantial learner-facing chat explanation.
+Apply this contract to project guides and substantial technical explanations. It governs the reader-facing result; planning notes such as the reader model, concept map, and coverage ledger remain internal.
 
-The artifact-maintenance sections apply only when a guide or journal is authorized and relevant. A read-only chat explanation does not gain file-write permission and does not require artificial guide or journal creation. Adapt paths and headings to repository conventions, but preserve the distinction between learning, procedures, design explanations, and lookup reference.
+## Write from Evidence
 
-## Start from the Reader's Journey
+Inspect the current system before explaining it. Verify the user problem, entry points, representative flow, boundaries, inputs, outputs, state changes, errors, tests, generated sources, and governing documents. Read names as clues, not proof.
 
-Write top-down. A first-time reader should always know:
+For every consequential claim, know whether its authority is:
 
-1. What human or product problem the system solves.
-2. What the smallest useful mental model is.
-3. How one representative case moves through that model.
-4. Where the current chapter sits in the whole.
-5. Which real code implements the idea.
-6. What can fail, what remains outside the boundary, and what to learn next.
+- current runtime behavior shown by code or tests;
+- a normative contract or policy;
+- a generated artifact and its source;
+- a historical decision;
+- an inference from available evidence;
+- a proposal or planned behavior.
 
-Do not begin with an exhaustive package, directory, class, or function inventory. Introduce the map first, then reveal details at the point the running example reaches them.
+Make conflicts and inference visible. Do not silently reconcile them or present a likely rationale as a recorded decision.
 
-## Maintain Two Different Artifacts
+## Write for a Reader Outcome
 
-### Stable Learning Guide
+Open with the document promise: what this guide covers, why it matters to this reader, what knowledge it assumes, and what reasonably expected topic it does not cover. Lead with the answer or model the reader needs, not the history of the project or the inventory of its files.
 
-Default: `docs/learning/README.md`
+Use the provisional reader model from `calibration.md`. Keep depth local to each concept. Do not repeatedly announce the reader model or turn the prose into a personalized assessment.
 
-This describes the current system, not the history of how it got there. Recommended structure:
+## Build a Predictive Core Mental Model
 
-1. **Start here:** problem, intended reader, prerequisites, and how to use the guide.
-2. **Five-minute mental model:** three to seven essential ideas and one compact flow.
-3. **Running example:** one realistic input or user action from boundary to outcome.
-4. **System map:** major layers, packages, directories, and dependency direction.
-5. **Learn chapters:** concepts in dependency order, attached to the running example.
-6. **How-to paths:** common tasks such as adding an input, tracing an error, or extending a rule.
-7. **Design explanations:** important choices, alternatives, and tradeoffs.
-8. **Reference:** modules, public APIs, inputs, outputs, error forms, and generated artifacts.
-9. **Glossary and next path:** retrieval aid and a deliberate next learning sequence.
+The core mental model is not a summary of every subsystem. It is the smallest accurate model that lets the reader predict the representative behavior.
 
-The four information modes serve different reader needs:
+Include only the necessary:
 
-| Mode | Reader question | Writing shape |
-|---|---|---|
-| Learn | “How do I understand this?” | Ordered narrative and worked examples |
-| How-to | “How do I accomplish this?” | Goal-oriented steps with verification |
-| Explanation | “Why is it designed this way?” | Context, forces, alternatives, consequences |
-| Reference | “What exactly is available?” | Precise, scannable facts and signatures |
+- actors or callers;
+- system boundaries;
+- important state or data representations;
+- transformations or decisions;
+- observable result;
+- highest-consequence failure boundary.
 
-### Work Learning Journal
+Use plain relationships before implementation names. Then attach real project terms to the model so later code has a place to land. Avoid an arbitrary time promise such as “five-minute.”
 
-Default: `docs/learning/journal/YYYY-MM-DD-<topic>.md`
+## Carry One Representative Case
 
-This preserves the learning context of one work unit. Recommended structure:
+Choose one realistic input, user action, request, failure, or change that crosses the important boundaries. Reuse it as concepts and modules appear. Show how the same value or intention changes representation and meaning at each stage.
 
-1. One-sentence goal.
-2. The problem before the change.
-3. What changed and why.
-4. Concepts introduced or clarified.
-5. A real code path through the change.
-6. Alternatives considered and why they were not selected.
-7. How verification works and how to read its output.
-8. What moved into the stable guide.
-9. Remaining uncertainty and next learning step.
+Introduce another example only when it reveals a different boundary, invalidates an overgeneralization, or demonstrates transfer. Avoid toy examples that use a technology in a way real users normally would not.
 
-Do not copy the Git diff into prose. Explain changes that alter the reader's model. Link to stable guide sections instead of duplicating timeless explanations.
+## Explain Concepts in Place
 
-## Teach a Concept Before Depending on Its Name
+Before depending on a consequential concept, use `explanation-method.md`. The reader should be able to answer:
 
-For a foundational or unfamiliar concept, follow this ladder:
+- What is it, and what nearby thing is it not?
+- Why does it exist generally, and why does it matter here?
+- How does its mechanism work from input through decision to result?
+- Which prerequisites does that mechanism depend on?
+- How does this project use, adapt, narrow, or extend the conventional idea?
+- Which real module, caller, input, output, error, and test embody it?
+- What does it not guarantee, and how can the reader verify the boundary?
 
-1. **Familiar situation:** use a mental model the reader likely already owns.
-2. **Problem:** show what becomes unreliable or repetitive without the concept.
-3. **Name and meaning:** introduce the technical term, original English, and contextual nuance.
-4. **Minimal example:** show the smallest data or code that demonstrates the behavior.
-5. **Line-by-line explanation:** describe value changes and decisions, not merely syntax.
-6. **Project mapping:** point to the real module, caller, input, and output.
-7. **Boundary:** state what the concept does not guarantee and the common misconception.
+These answers may form a short inline bridge or a full chapter. Do not force visible `What`, `Why`, and `How` headings when connected prose reads better, but do not omit the reasoning behind a neat definition.
 
-Avoid circular explanations such as “a schema is a schema definition for data.”
+Teach prerequisites before use. If a prerequisite detour is necessary, tell the reader why, keep it bounded, and return explicitly to the original concept.
 
-### Example: explaining schema
+## Connect General Practice to Project Use
 
-Begin with a familiar situation: an application form specifies required fields and which kinds of answers are accepted. Then introduce the technical idea:
+When the guide introduces a standard concept such as schema, adapter, registry, serialization, cache, event, transaction, or compiler stage:
 
-> 스키마(`schema`: 데이터가 갖춰야 할 모양과 허용 조건을 기계가 검사할 수 있게 표현한 규칙)는 실행 데이터 그 자체가 아니라, 그 데이터를 판정하는 기준이다.
+1. Explain the conventional role and mechanism without claiming all systems implement it identically.
+2. Identify the project evidence.
+3. State what follows convention.
+4. State what differs and why, only when the rationale is supported.
+5. Show the operational consequence of the difference.
 
-Label the code honestly:
+This general-to-project bridge prevents two failures: a generic textbook chapter with no codebase connection, and a codebase inventory that assumes the reader already owns the underlying concept.
 
-**단순화한 예시 — 특정 프로젝트의 실제 API가 아님**
+## Make Code an Explained Piece of Evidence
 
-```json
-{
-  "type": "object",
-  "required": ["name"],
-  "properties": {
-    "name": { "type": "string", "minLength": 1 }
-  }
-}
-```
+Every teaching code block needs:
 
-Explain the important lines:
+1. **Question before code:** what behavior the excerpt demonstrates and which value, branch, or state to watch.
+2. **Fidelity label:** simplified example, actual project code, or abridged actual code.
+3. **Small excerpt:** only the lines needed for one reasoning goal.
+4. **Execution walkthrough:** what each important decision does in actual order.
+5. **Observable result:** value, state, side effect, diagnostic, or output.
+6. **Reasoning:** why the code has this step or shape, not a syntax paraphrase.
+7. **Project connection:** module path, identifier, caller, and place in the larger model.
+8. **Boundary:** what the excerpt leaves out or does not prove.
 
-- `type: object` means the input must be a key/value object.
-- `required: ["name"]` means an omitted `name` is rejected.
-- `type: string` rejects a number or object in that field.
-- `minLength: 1` rejects an empty string even though it is technically a string.
+For actual code, verify the current path and identifier after implementation changes. Do not silently rewrite real code for readability. When syntax is not the point, use a value trace, concise pseudocode, or prose instead.
 
-Then map it to the current project: identify which validator loads which schema, what data it checks, what diagnostic it returns, and whether the schema guarantees business meaning or only structural validity.
+## Explain Names as Relationships
 
-## Use a Code Sandwich
+Preserve searchable identifiers and standard English terms. At first consequential use, explain the responsibility or relationship the name signals in this project.
 
-Never drop an unexplained code block into a learning chapter.
+For example, do not stop at `normalize` means “정규화.” Explain that this stage converts multiple accepted input forms into one internal form that later stages may treat uniformly, then show the actual input and output here.
 
-1. **Before:** tell the reader what question the code answers and what values to watch.
-2. **Code:** keep the excerpt small enough to hold in working memory.
-3. **Walkthrough:** explain important lines in execution order.
-4. **Result:** show the resulting value, state, diagnostic, or side effect.
-5. **Connection:** reconnect the excerpt to the system map and running example.
+When several stage names form a pipeline—such as `parse`, `validate`, `normalize`, `resolve`, `compile`, and `serialize`—explain the value change, unique decision, owned failure, and ordering between stages. A glossary supports lookup but never replaces the first meaningful explanation.
 
-If the real function is large, show a small exact excerpt or a separate simplified example. Do not silently rewrite real code for readability.
+## Write Connected Prose
 
-## Label the Fidelity of Every Example
+- Start each paragraph with its central claim, reader question, or necessary context.
+- Keep one reasoning thread per paragraph and one primary idea per sentence.
+- Put the real actor before a precise verb when behavior or ownership matters.
+- Use concrete nouns in place of ambiguous pronouns.
+- State causes, conditions, ordering, and consequences explicitly.
+- Compare a new idea with familiar knowledge only when the relationship is accurate and useful.
+- Use an analogy for one relationship, then return to literal facts before the analogy creates false predictions.
+- Prefer natural language in the user's language while retaining identifiers and searchable technical terms.
+- Avoid “simple,” “obvious,” “just,” “easy,” and “straightforward” when they replace a missing step or assumption.
+- Do not make the voice childish or conversationally padded in an attempt to be friendly.
 
-Use one of these labels whenever a reader could mistake teaching code for a supported API:
+After drafting, read only the first sentence of each paragraph. They should form a coherent outline of the argument. Then read the transitions and verify that every new idea has a reason to appear where it does.
 
-- **Simplified example:** invented or reduced to teach one concept; not a project API.
-- **Actual project code:** verified against the current source and presented without semantic alteration.
-- **Abridged actual code:** real code with irrelevant sections explicitly omitted.
+## Use Structure as a Reader Aid
 
-For actual code, include the current module path and exact identifier. Re-check both after implementation changes.
+Apply `information-architecture.md` at the whole-guide, chapter, and paragraph scales.
 
-## Explain Names as Design Signals
+- Give each major section one primary reader question.
+- Use headings as meaningful entry points, not labels for arbitrary chunks.
+- Make sections understandable to readers who land from search by briefly locating them in the whole.
+- Keep exact signatures and inventories in reference-shaped sections.
+- Keep troubleshooting near the behavior or task that produces the symptom unless its volume warrants a dedicated section.
+- Mix concept, procedure, rationale, reference, and diagnosis only when proximity helps the reader complete a coherent task or understand a mechanism.
+- Do not expose the author's content taxonomy as the reader's main navigation.
 
-Names communicate expected responsibility. Translate them, then explain what relationship the English word implies in this codebase.
+## Use Tables and Diagrams Sparingly
 
-Examples to adapt, not blindly copy:
+A table earns its place when readers need repeated-field comparison or exact mapping across several items. Keep cells concise and parallel. Introduce the question the table answers, and explain the important relationship afterward.
 
-- `contract.ts`: `contract` commonly signals a boundary other modules may rely on—types, inputs, outputs, diagnostics, and compatibility promises—rather than the implementation of the work itself.
-- `authoring`: the human- or tool-facing stage where an intent is written before it is validated, resolved, compiled, or rendered.
-- `registry`: a controlled lookup that gives known items stable identities and metadata; it is more than an arbitrary array.
-- `manifest`: a serializable inventory describing what a package or process contains, produced, or expects.
-- `normalize`: converting several acceptable representations into one canonical internal representation.
-- `serialize`: turning an in-memory value into a transferable or storable representation under defined rules. It does not automatically imply validation or persistence.
+Use prose or a flow for causal sequences. Use a list for independent items. Do not turn definitions or a chapter narrative into a matrix merely because Markdown supports tables.
 
-When a project's use differs from convention, explain the project's actual meaning rather than forcing the conventional one.
+Use a diagram only when hierarchy, direction, state, sequence, or ownership becomes materially easier to see. Label the meaning of arrows and explain how the diagram connects to the representative case.
 
-## Annotate English Without Drowning the Prose
+## Separate Stable Understanding from Work History
 
-Write the main explanation in the user's language. Preserve code identifiers, paths, protocol names, and standardized terms.
+The stable guide describes the current system. It should not narrate every edit or become a release log.
 
-### Semantic words
+A work journal is optional. Create or update it only when requested, established by repository convention, or useful for preserving design provenance. If used, keep transient investigation and decisions there, promote durable explanations to the stable guide, and link rather than duplicate.
 
-At first meaningful use, annotate an English term when translation alone would lose the relationship or implied responsibility:
+Do not add quizzes, recall questions, exercises, or prescribed next lessons unless the user requested a tutorial, curriculum, or practice material. A polished guide may end with boundaries, implications, or lookup links without adopting a tutor voice.
 
-> 계약(`contract`: 두 모듈이 서로 기대해도 되는 입력·출력·오류 규칙의 경계)
+## Keep Authority, Time, and Confidence Visible
 
-The note must explain contextual meaning, not merely provide a bilingual pair.
+Use explicit language for differences among:
 
-### Ordinary English in technical roles
+- “The current implementation does …”
+- “The specification requires …”
+- “The generator produces … from …”
+- “The ADR records that …”
+- “The available evidence suggests …”
+- “The proposal would …”
 
-Briefly annotate common words when their technical use determines behavior:
+When sources disagree, identify the exact claims and locations, assess authority and recency, explain current versus intended behavior, and request a decision only if the authorized task cannot resolve the conflict.
 
-- `default`: no more-specific choice was supplied, so this value applies.
-- `override`: a more-specific rule replaces an earlier effective value.
-- `source`: the origin side of a read, copy, or transformation.
-- `target`: the destination or intended representation.
-- `owner`: the component or team with final change responsibility.
-- `raw`: not yet interpreted, validated, or normalized in the current pipeline.
-- `stable`: safe for downstream reliance under a stated compatibility policy.
+## Final Editorial Pass
 
-Annotate the first consequential occurrence, not every repetition. Prefer a short callout or glossary table when inline parentheses would make a sentence hard to parse.
+Revise the draft until:
 
-The glossary supports recall and lookup. It never replaces the first in-place explanation.
-
-## Explain Structure at Four Resolutions
-
-Move through these resolutions only after the previous one is clear:
-
-| Resolution | Explain | Reader should be able to answer |
-|---|---|---|
-| System | Purpose, actors, end-to-end flow | “What happens from request to result?” |
-| Package/directory | Ownership and dependency direction | “Why does this folder exist, and who may depend on it?” |
-| Module | One responsibility and collaborators | “What enters, what leaves, and whom does it call?” |
-| Function/method | Input, output, side effects, errors, invariants | “When should I call it, and what can go wrong?” |
-
-For modules and functions, cover only facts supported by code:
-
-- purpose and non-responsibilities;
-- caller and downstream collaborator;
-- input and output shapes;
-- state mutation, I/O, caching, or other side effects;
-- validation and failure representation;
-- ordering or lifecycle constraints;
-- a representative use;
-- tests that demonstrate the contract.
-
-Avoid describing every private helper at equal depth. Group mechanical helpers and expand the ones that carry policy, transform meaning, cross a boundary, or commonly fail.
-
-## Manage Cognitive Load
-
-- Introduce three to seven core ideas in the first mental model, not the entire ontology.
-- Use one running example across chapters so new concepts attach to familiar data.
-- Preview an idea, teach it when needed, then recap it in relation to the whole.
-- Put optional edge cases and exhaustive signatures in reference sections.
-- After a dense section, include a short “what to remember” recap and one retrieval question the reader can answer without rereading.
-- Use a diagram only when relationships, direction, state, or sequence are materially clearer than prose. Explain how to read it.
-- Prefer precise everyday Korean over literal translation for Korean readers; keep English only where it preserves identification or nuance.
-
-## Keep Authority and Time Clear
-
-Distinguish explicitly among:
-
-- current runtime behavior;
-- normative design or policy;
-- generated output and its source;
-- historical decision;
-- proposed future behavior.
-
-If sources conflict, state the conflict and the evidence. Do not reconcile code and documentation without authorization. A learner must not leave believing a proposal is already implemented.
+- the introduction, headings, and paragraph openings tell one coherent story;
+- the reader can trace the representative case without consulting a file tree;
+- every consequential concept has adequate what–why–how coverage and prerequisite closure;
+- general concepts and project-specific behavior are connected;
+- code and diagrams have observation guidance and interpretation;
+- tables perform real comparison or lookup work;
+- exact facts remain easy to find;
+- no section reads as a pasted spec, changelog, or tutoring script unless that is the requested form.

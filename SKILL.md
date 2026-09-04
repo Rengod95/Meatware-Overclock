@@ -1,54 +1,48 @@
 ---
 name: meatware-overclock
-description: Use when a user explicitly asks to keep learning while an agent builds, changes, reviews, or investigates software and wants learner-calibrated project guides that evolve with the work.
+description: Use only when explicitly invoked to create or maintain reader-calibrated, project-grounded software guides that connect a clear mental model to real code, design reasons, and failure boundaries.
 ---
 
 # Meatware Overclock
 
-Keep the authorized software task moving while maintaining learning material that helps the user understand and eventually own the result.
+Produce technical guides that a reader can understand as connected explanations rather than as a file inventory, specification dump, or tutoring script. Keep any authorized software task moving, but treat the inspected system as evidence for the guide—not as a separate named workflow.
 
-## Non-Negotiable Boundaries
+## Boundaries
 
-- Activate only through explicit user invocation. The product metadata disables implicit invocation.
-- Do not expand the authorization of the underlying task. A review request remains read-only; a build request permits only relevant implementation work.
-- Do not pause safe implementation merely to teach. Ask only product or architecture decisions that genuinely require the user; treat calibration questions as non-blocking.
-- Never persist raw calibration answers, personal judgments, or labels such as junior, middle, or senior in a repository.
-- Do not invent project behavior. Derive learning material from the current source of truth and expose unresolved code/document conflicts.
+- Activate only through explicit user invocation. Preserve `policy.allow_implicit_invocation: false`.
+- Do not enlarge the underlying task's authority. A review remains read-only; a build permits only relevant implementation and documentation changes.
+- Do not invent project behavior. Verify code, tests, generated sources, and governing documents, and expose conflicts among them.
+- Do not pause safe work for reader calibration. Ask only questions whose answers would materially change the guide.
+- Never persist raw calibration answers, personal judgments, or rank labels such as junior, middle, senior, or non-technical.
+- Do not force a learning guide, journal, tutorial, matrix, or fixed table of contents when the requested artifact or repository convention needs a different form.
 
-## Load References Progressively
+## Load References When Needed
 
-Read the supporting references when their stage becomes relevant:
+- Read `references/calibration.md` before establishing or revising reader assumptions.
+- Read `references/information-architecture.md` before outlining a long guide, chapter sequence, or index.
+- Read `references/explanation-method.md` before explaining foundational or consequential technical concepts.
+- Read `references/writing-contract.md` before creating or substantially revising reader-facing material.
+- Read `references/quality-rubric.md` before claiming the material is complete.
+- Read `references/master-prompt.md` only when the user requests the standalone prompt or its rules need inspection.
 
-- Read `references/calibration.md` before assessing or updating reader assumptions.
-- Read `references/writing-contract.md` before creating or changing learning documents or delivering a substantial learner-facing explanation in chat.
-- Read `references/quality-rubric.md` before claiming the learning material is complete.
-- Read `references/master-prompt.md` only when the user asks for the standalone prompt or its rules need inspection.
+## Process
 
-## Run Two Lanes
+1. Confirm the requested outcome, write permissions, repository instructions, source-of-truth order, intended readers, and what the document must help them understand or do.
+2. Establish an evidence-based, provisional reader model using `references/calibration.md`. Model knowledge per concept and task rather than assigning one global level.
+3. Inspect the real system before explaining it: user problem, actors, entry points, one representative execution path, responsibility boundaries, data transformations, failure forms, tests, generated artifacts, and relevant design sources.
+4. Build a compact internal concept map. Record the consequential concepts, their prerequisite concepts, their relationships, the reader question each resolves, and the project evidence that supports it. Do not dump this planning structure into the guide.
+5. Design the document at three scales using `references/information-architecture.md`:
+   - the whole guide grows from problem and core mental model to real behavior and exact detail;
+   - each chapter resolves one coherent reader question and reconnects to the whole;
+   - each paragraph advances one claim in a known-to-new order.
+6. Explain every consequential introduced concept at the depth required by the reader model. Apply the concept unit in `references/explanation-method.md`: what it is, why it exists and matters, how it works generally, how this project uses or adapts it, which prerequisites it depends on, and what it does not guarantee.
+7. Use realistic examples and verified project traces. Label simplified, actual, and abridged actual code. Put the observation point before code and the result, reasoning, and project connection after it.
+8. Use information types as authoring tools, not as a visible matrix the reader must decode. Keep exact lookup facts precise; weave context, mechanism, rationale, procedure, diagnosis, and examples together only where the reader's question benefits.
+9. Update an existing stable guide when authorized. Create a work journal only when the user requests one, the repository already requires one, or preserving decision provenance has clear value. Do not create a journal merely because this skill is active.
+10. Verify software with the repository's gates and verify the guide separately with `references/quality-rubric.md`. Report source conflicts, provisional reader assumptions, and unverified examples plainly.
 
-Maintain two coordinated lanes:
+## Default Artifact
 
-1. **Work lane:** perform the requested implementation, review, investigation, test, and verification under the repository's rules.
-2. **Learning lane:** capture the concepts, naming reasons, decisions, data flow, failure boundaries, and reading strategies needed to understand that work.
+When the repository has no better convention and guide creation is authorized, prefer `docs/learning/README.md` for the current system. Choose a different path or document shape when the user's purpose, existing information architecture, or maintenance model makes it more appropriate.
 
-The learning lane observes the work lane; it does not control or enlarge it. Batch learning updates at meaningful checkpoints rather than after every file edit.
-
-Meaningful checkpoints include a new subsystem, changed public API or data flow, settled design decision, verified task unit, completed task, or guide content made stale by the work. A typo or mechanically equivalent edit normally needs only a staleness check.
-
-## Workflow
-
-1. Confirm the underlying task, mutation permissions, repository instructions, and available source-of-truth documents.
-2. Reuse reader information already established in the conversation. Apply `references/calibration.md` only to missing dimensions. On first activation, begin with one or two actual short questions and accumulate 4–6 across early meaningful checkpoints without blocking safe work. If explicit answers already in the conversation make a question redundant, identify which calibration slot they satisfy instead of repeating it or inventing filler. Proceed with provisional assumptions while answers are pending.
-3. Inspect the real system before explaining it: entry points, representative flow, packages or modules, public boundaries, tests, generated sources, and relevant architecture documents.
-4. Find existing learning-document conventions. Unless the repository establishes better locations, maintain:
-   - `docs/learning/README.md` for the stable, top-down guide to the current system.
-   - `docs/learning/journal/YYYY-MM-DD-<topic>.md` for the current work's learning record.
-5. Continue the work lane. Keep a compact learning delta: concepts introduced, mental model changed, naming that needs explanation, exact examples worth preserving, and stale guide sections.
-6. Before the first learning-document edit or substantial learner-facing chat explanation, read and apply `references/writing-contract.md`. Prefer a small running example that travels from user problem to system boundary to real code. Teach a foundational concept in place before relying on a glossary definition. For every learning code block, put the observation question or values to watch before the block, then explain the result and project connection after it.
-7. At each meaningful checkpoint, update both artifacts only where their distinct purposes require it. Do not turn the guide into a changelog or the journal into a second architecture manual.
-8. Verify the software using the task's normal gates. Separately verify the learning material using `references/quality-rubric.md`.
-9. In the handoff, lead with the task outcome, then name the learning artifacts changed, the new mental model they teach, and any unresolved source conflict or provisional reader assumption.
-
-## When No Repository Exists
-
-If the task is a design discussion, pasted code, or a new project without document conventions, provide the guide and journal as clearly separated artifacts in the user's requested destination. Do not create a repository or files unless the underlying request authorizes writes.
+When no repository exists or writes are not authorized, provide the requested explanation in chat or in the user-selected artifact without creating repository files.

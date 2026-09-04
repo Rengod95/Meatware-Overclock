@@ -1,7 +1,7 @@
 interface:
   display_name: "Meatware Overclock"
-  short_description: "Catch up with the agent while it keeps shipping"
-  default_prompt: "Use $meatware-overclock to keep implementation moving while maintaining a level-calibrated guide and learning journal."
+  short_description: "Turn real software into reader-calibrated guides"
+  default_prompt: "Use $meatware-overclock to build a reader-friendly guide from the core mental model to real code, design reasons, and failure boundaries."
 
 policy:
   allow_implicit_invocation: false

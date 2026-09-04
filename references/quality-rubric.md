@@ -1,106 +1,126 @@
-# Learning Document Quality Rubric
+# Technical Guide Quality Rubric
 
-Use this rubric at meaningful checkpoints and before completion. Record only material failures in the work journal; do not turn the journal into a checklist dump.
+Use these gates at meaningful checkpoints and before completion. A failed source-accuracy gate blocks a claim that the guide is current. Record only material failures; do not paste the rubric into the guide or turn an optional journal into a checklist dump.
 
-## Gate 1: Source Accuracy
+## Gate 1 Source and Authority
 
-- [ ] Every named path and identifier exists in the inspected revision.
-- [ ] Actual-code excerpts preserve behavior; omissions are labeled.
-- [ ] Inputs, outputs, side effects, errors, and callers are supported by code or tests.
+- [ ] Every named path, identifier, input, output, error, caller, and test exists in the inspected revision.
+- [ ] Actual and abridged code preserves behavior; omissions and simplifications are labeled.
 - [ ] Generated artifacts identify their source and are not presented as normal edit targets.
-- [ ] Current behavior, normative policy, history, and future intent are distinguished.
-- [ ] Source conflicts and provisional interpretations are visible.
+- [ ] Runtime behavior, normative rules, history, inference, and future proposals remain distinct.
+- [ ] Project rationale is supported or clearly labeled as inference.
+- [ ] Source conflicts and unverified areas are visible.
 
-Any failed item here blocks a claim that the guide is current.
+## Gate 2 Reader Model and Prerequisite Closure
 
-## Gate 2: Mental Model and Flow
+- [ ] The reader model describes documentation needs per task and concept, not a global rank.
+- [ ] Existing conversational and document evidence was used before asking questions.
+- [ ] Questions were asked only when the answer changed depth, structure, examples, or terminology.
+- [ ] Each consequential concept's direct prerequisites were checked recursively.
+- [ ] No basic term is overexplained while a harder prerequisite is silently assumed.
+- [ ] Persistent assumptions contain no raw answers, personal judgments, or sensitive data.
 
-- [ ] The guide begins with the user or product problem, not a file inventory.
-- [ ] The first section limits the initial model to three to seven essential ideas.
-- [ ] A representative case travels through the whole system.
-- [ ] Each detailed chapter reconnects to the system map or running example.
-- [ ] Dependency direction and responsibility boundaries are explicit.
-- [ ] The reading order follows conceptual dependencies.
+## Gate 3 Whole-Guide Architecture
 
-## Gate 3: Concept Explanation
+- [ ] The guide opens with the reader's problem, document promise, prerequisites, and relevant non-scope.
+- [ ] The core mental model is the smallest accurate predictive model, not a package summary or timed pitch.
+- [ ] A realistic case travels through the important boundaries to an observable result.
+- [ ] Concepts appear in dependency order when the representative case needs them.
+- [ ] The project map follows the mental model rather than preceding it.
+- [ ] First-read and later-lookup paths are both usable.
+- [ ] A reader landing mid-guide can locate the section in the whole.
 
-For each newly important foundational term:
+## Gate 4 Concept Explanation
 
-- [ ] A familiar situation appears before or with the term.
-- [ ] The problem solved by the concept is concrete.
-- [ ] The original English term and contextual nuance appear at first meaningful use.
-- [ ] A minimal example or code excerpt demonstrates behavior.
-- [ ] Important lines and value changes are explained.
-- [ ] The real project module, caller, input, and output are connected.
-- [ ] The boundary and one common misconception are stated.
+For each consequential introduced concept:
 
-Definitions composed mostly of undefined technical words fail this gate.
+- [ ] **What:** plain meaning, technical term, type of thing, scope, and nearest useful distinction are clear.
+- [ ] **Why:** the general problem, project relevance, and supported tradeoff or rationale are clear.
+- [ ] **How:** actors, inputs, decisions, state or value changes, outputs, and failures form a causal explanation.
+- [ ] General convention is connected to the project's use, adaptation, or deviation.
+- [ ] Required foundations appear before use or are bridged and linked.
+- [ ] A realistic example, trace, or code excerpt demonstrates the mechanism when needed.
+- [ ] A boundary, non-guarantee, misconception, and verification point are present where consequential.
+- [ ] The explanation returns to the core model or representative case.
 
-## Gate 4: Code Pedagogy
+## Gate 5 Code and Example Pedagogy
 
-- [ ] Each teaching code block has a before/after explanation.
-- [ ] The reader is told what value or decision to watch.
-- [ ] The result of execution or transformation is shown.
-- [ ] Simplified, actual, and abridged actual code are clearly labeled.
-- [ ] Examples are small enough to serve one learning goal.
-- [ ] Exact project paths and identifiers are current.
+- [ ] Every teaching code block has a question or observation target before it.
+- [ ] Simplified, actual, and abridged actual examples are distinguishable.
+- [ ] Important decisions are explained in execution order, including why they exist.
+- [ ] Resulting values, state, side effects, diagnostics, or output are shown.
+- [ ] Examples are realistic and small enough to serve one reasoning goal.
+- [ ] Project paths, identifiers, and test claims were rechecked after changes.
+- [ ] Large code blocks were replaced by a smaller excerpt or trace when syntax was not the point.
 
-## Gate 5: Language Accessibility
+## Gate 6 Information Shape and Navigation
 
-- [ ] Main prose follows the user's language and demonstrated comfort.
-- [ ] Code identifiers and standard names remain searchable in their original form.
-- [ ] Semantic word notes explain implied responsibility or relationship, not just translation.
-- [ ] Consequential ordinary English words receive brief contextual notes when needed.
-- [ ] Repeated parentheses and annotations do not overwhelm the sentence.
-- [ ] A glossary supplements rather than replaces first-use explanations.
+- [ ] Each section has one primary reader question and an appropriate orientation, concept, trace, procedure, rationale, diagnosis, reference, or authority shape.
+- [ ] Different shapes are combined only when proximity improves understanding or task flow.
+- [ ] Procedures start from a real goal, state prerequisites, and show verification and likely failure.
+- [ ] Troubleshooting is discoverable by symptom or exact error and distinguishes evidence from guesses.
+- [ ] Exact reference facts are concise, authoritative, and scannable.
+- [ ] The visible index is organized by reader needs and conceptual dependencies before file structure.
+- [ ] Quizzes, recall prompts, and prescribed next lessons appear only in requested tutorial material.
 
-## Gate 6: Artifact Separation
+## Gate 7 Table and Diagram Discipline
+
+- [ ] Every table performs repeated-field comparison or exact mapping that prose or a list would handle worse.
+- [ ] Table cells are concise, parallel, and introduced by the question the table answers.
+- [ ] Causal or narrative reasoning was not flattened into a matrix.
+- [ ] Each diagram makes direction, hierarchy, state, sequence, or ownership materially clearer.
+- [ ] Diagram labels and surrounding prose explain how to read it and connect it to the real case.
+- [ ] Accessibility and narrow-screen use were considered.
+
+## Gate 8 Prose and Terminology
+
+- [ ] Paragraph openings form a coherent outline when read alone.
+- [ ] Each paragraph advances one reasoning thread in a known-to-new order.
+- [ ] Sentences name actors, use precise verbs, and expose conditions and consequences.
+- [ ] Undefined terms, acronyms, vague pronouns, and circular definitions are absent.
+- [ ] Searchable technical terms remain available while the main prose follows the user's language.
+- [ ] Analogies illuminate one relationship and exit before becoming misleading.
+- [ ] “Simply,” “obviously,” “just,” “easy,” and “straightforward” do not hide reasoning.
+- [ ] The tone respects an adult reader and does not become childish, padded, or condescending.
+
+## Gate 9 Artifact and Scope
 
 - [ ] The stable guide describes the current system rather than narrating every edit.
-- [ ] The work journal explains this work's decisions and learning delta rather than duplicating the guide.
-- [ ] Timeless explanations promoted to the guide are linked from the journal.
-- [ ] A small change does not create artificial architecture content.
-- [ ] Both artifacts were checked for staleness even if only one required editing.
-
-## Gate 7: Reader Calibration and Privacy
-
-- [ ] Questions cover only missing dimensions and use code or situations instead of status labels.
-- [ ] Safe work continued under explicit provisional assumptions.
-- [ ] The material reflects demonstrated knowledge without becoming inconsistent in tone.
-- [ ] No raw answers, ability judgment, or sensitive personal data entered project files.
-- [ ] Any persistent reader assumption describes documentation needs, not personal deficits.
-
-## Gate 8: Scope and Completion
-
-- [ ] Learning work did not expand the underlying task's authority.
-- [ ] Teaching did not block implementation except for a real user decision.
+- [ ] A work journal exists only because the user, repository, or provenance need justifies it.
+- [ ] Durable explanations are not duplicated across guide, journal, and reference.
+- [ ] Documentation work did not expand the underlying task's authority.
 - [ ] Software and documentation were verified separately.
-- [ ] The handoff identifies changed learning artifacts and the mental model they now teach.
-- [ ] Remaining uncertainty, stale areas, and unverified examples are stated plainly.
+- [ ] The handoff identifies changed guide artifacts, the main model now available, and remaining uncertainty.
+
+## Reader Outcome Spot Checks
+
+Select several high-consequence concepts and verify that a reader can answer, without reconstructing the author's planning matrix:
+
+1. What is this concept and what is it not?
+2. Why does it exist, and why does this project use it here?
+3. How does one real value or action move through it?
+4. Which prerequisite ideas make that mechanism understandable?
+5. Where is it implemented, and what project-specific adaptation matters?
+6. What can fail or remain unproved, and how would I verify it?
+
+Select one chapter and verify that its opening, body, example, and close all resolve the same reader question. Select each table and require a one-sentence justification for why rows and columns outperform prose.
 
 ## Red-Flag Search
 
 Before completion, scan for:
 
-- unexplained acronyms and English identifiers;
-- definitions that use the term itself;
-- paragraphs containing several newly introduced concepts;
-- large code blocks without observation guidance;
-- path or API names copied from an earlier revision;
-- “simply,” “obviously,” or “just” where the omitted reasoning matters;
-- exhaustive lists before the reader has a map;
-- changelog prose in the stable guide;
-- tutorial prose in exact API reference tables;
-- personal labels such as junior, weak, slow, or non-technical.
+- exhaustive file or function inventories before the reader has a model;
+- matrices that replace narrative reasoning;
+- definitions that use the term itself or several undefined terms;
+- “A calls B” descriptions with no value, decision, or state change;
+- generic textbook explanations with no project mapping;
+- project-specific facts with no conceptual foundation;
+- actual code presented without provenance or observation guidance;
+- rationale inferred from naming alone;
+- conflicting reader assumptions between adjacent sections;
+- tutorial devices in a guide or reference that was not meant to teach by practice;
+- personal rank labels or raw calibration answers.
 
-## Compact Completion Report
+## Completion Report
 
-Report the result in this order:
-
-1. Underlying task outcome and verification.
-2. Learning guide sections added or corrected.
-3. Work journal created or updated.
-4. The main mental model now available to the reader.
-5. Unresolved source conflicts or provisional assumptions.
-
-Do not paste this rubric into the final report.
+Lead with the authorized task outcome and verification. Then identify the guide artifacts changed, the core mental model and major concepts now explained, any optional provenance artifact created, and unresolved source conflicts or provisional reader assumptions.
