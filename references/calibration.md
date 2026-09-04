@@ -1,78 +1,109 @@
-# Reader Calibration
+# Reader Model and Recursive Calibration
 
-Use calibration to choose explanation depth, not to judge the person.
+Use calibration to decide what must be explained, what can be bridged briefly, and what can be assumed. Do not use it to judge or rank the person.
 
-## Rules
+## Model Knowledge Locally
 
-- Reuse reliable evidence already present in the current conversation. Do not repeat a question the user has explicitly answered.
-- On first activation, ask 4–6 actual short code, example, or situation questions across the early meaningful checkpoints. Avoid abstract self-ratings such as “Are you a junior or senior?”
-- Begin with one or two questions, state that safe work will continue, and use one or two later checkpoints to complete the set. Do not present all questions as an up-front exam.
-- Existing explicit answers may replace question slots only when re-asking would be redundant. Name the already-established slot and its conversational evidence; never invent filler merely to reach a count.
-- Keep each question answerable in one or two sentences. If the user cannot answer immediately, retain the unanswered questions and continue under an explicit provisional assumption.
-- If immediate work is safe, proceed using explicit provisional assumptions. Revise them when answers arrive.
-- Ask only questions that will change the learning material. Skip irrelevant dimensions.
-- Never infer general intelligence or a global level from one answer.
-- Never persist raw answers or deficit-focused personal judgments in project files.
+A reader does not have one technical level. They can understand a framework's API while lacking the runtime model beneath it, know the product domain while being new to its data representation, or read code fluently while finding architecture prose unfamiliar.
 
-## Dimensions
+Track only the dimensions that affect the current document:
 
-| Dimension | Evidence to seek | Explanation decision |
-|---|---|---|
-| Code fluency | Reading types, branches, errors, and data transformations | How much syntax and execution detail to unpack |
-| System mental models | Understanding boundaries, dependencies, and data flow | How much architecture scaffolding to provide |
-| Domain familiarity | Familiarity with the problem space and its invariants | Which domain assumptions require examples |
-| Technical English | Comfort with identifiers and English documentation | How often to annotate semantic and ordinary English words |
-| Learning preference | Preference for overview, worked example, experimentation, or reference | The order and density of presentation |
-| Task ownership | Need to maintain, review, extend, or merely use the result | Which decisions and failure modes must be retained |
+- **Purpose:** use, review, debug, extend, operate, or decide.
+- **Code fluency:** syntax, execution order, types, state changes, errors, and transformations.
+- **System model:** actors, boundaries, dependencies, lifecycle, concurrency, and data flow.
+- **Domain knowledge:** business rules, invariants, terminology, and failure consequences.
+- **Concept familiarity:** the specific concepts required by this guide, not a general technology rank.
+- **Technical language:** comfort with identifiers, acronyms, and English documentation.
+- **Reading behavior:** continuous first read, search landing, task-time lookup, or review.
+- **Ownership horizon:** immediate use versus future maintenance, extension, or architecture decisions.
 
-## Question Bank
+Express the result as documentation needs, for example:
 
-Adapt these to the current language and stack. Use a tiny real or representative snippet when possible.
+> Reader assumption: can follow TypeScript control flow and interfaces, is new to runtime validation boundaries, needs an overview before exact module details, and will maintain the input pipeline.
 
-### Code fluency
+Do not write labels such as “junior,” “weak at architecture,” or “non-technical.”
 
-> 이 코드에서 `undefined`가 나올 수 있는 경우를 바로 찾을 수 있나요, 아니면 실행 순서부터 같이 따라가는 편이 좋을까요?
+## Gather Evidence Before Asking
 
-```ts
-function findName(input: { user?: { name?: string } }) {
-  return input.user?.name;
-}
-```
+Use evidence already available in this order:
 
-### System mental model
+1. The user's stated goal, corrections, vocabulary, and requested depth.
+2. Questions and decisions the user has already handled in the conversation.
+3. The audience statement and conventions in existing documentation.
+4. The work the reader must perform with the result.
+5. Small, real examples from the current system.
 
-> 외부 API의 응답 모양이 바뀌었을 때, 호출하는 모든 기능을 고치는 것과 경계의 변환 모듈 한 곳에서 흡수하는 것 중 어느 구조가 더 자연스럽게 느껴지나요? 이유는 짧게만 적어도 됩니다.
+Ask a question only if different answers would change the outline, prerequisite depth, terminology, example choice, or failure coverage. Prefer an actual situation over a self-rating.
 
-### Domain familiarity
+Useful early questions include:
 
-> 이번 시스템이 다루는 데이터나 업무 규칙 중 이미 익숙한 것과 처음 보는 것을 각각 하나씩 골라주세요.
+- “이 문서를 읽은 뒤 직접 수정·디버깅해야 하나요, 아니면 구조를 검토하고 판단하는 것이 주목적인가요?”
+- “이 실제 입력이 어느 단계에서 형태가 바뀌는지 바로 따라갈 수 있나요, 아니면 단계별 값부터 함께 보는 편이 좋을까요?”
 
-### Technical English
+Later, ask only at a genuine ambiguity in the concept map:
 
-> `default` 다음에 `override`가 적용된다는 문장을 보면 우선순위가 바로 떠오르나요, 아니면 짧은 한국어 주석과 값 변화 예시가 있으면 더 편한가요?
+- “여기서 validation 규칙 자체보다 입력 경계가 실패를 진단으로 바꾸는 과정이 더 낯선가요?”
+- “이 오류를 호출 순서 문제로 보시나요, 데이터 경계 문제로 보시나요? 답에 따라 앞부분의 모델을 다르게 보강하겠습니다.”
 
-### Learning preference
+Do not fill a question quota. A demonstrated answer may settle several dimensions, and a long questionnaire often measures patience rather than understanding.
 
-> 먼저 전체 지도를 보고 작은 코드를 보는 방식과, 실행되는 예시 하나를 따라간 뒤 전체 구조로 넓히는 방식 중 어느 쪽이 기억에 더 잘 남나요?
+## Recurse Through Prerequisites
 
-### Task ownership
+Calibrate at the concept level while outlining and drafting:
 
-> 이번 결과물을 주로 사용하려는지, 직접 유지보수·확장하려는지에 따라 설명해야 할 실패 조건의 깊이가 달라집니다. 어느 쪽에 더 가깝나요?
+1. Identify the consequential concept the reader must understand.
+2. List only its direct prerequisites—the ideas required to understand the mechanism, not everything historically related to it.
+3. Mark each prerequisite provisionally:
+   - **owned:** evidence shows the reader can use it;
+   - **bridge:** likely familiar, but its role here needs one or two clarifying sentences;
+   - **foundation:** the guide must teach it before relying on it;
+   - **outside:** not needed for this document's promise.
+4. For every `foundation`, repeat the same check on its prerequisites.
+5. Stop when the explanation reaches an evidence-backed familiar idea, an accurate everyday causal model, or the declared scope boundary.
+6. Re-run the check whenever a draft introduces a new unexplained term or mechanism.
 
-## Store Only an Anonymous Reader Assumption
+This recursion prevents a common failure: carefully explaining an easy surface term while silently relying on a harder concept underneath it.
 
-If a persistent assumption materially improves shared documentation, phrase it around the document—not the person.
+### Example prerequisite chain for a validation boundary
 
-Good:
+The chain may be:
 
-> Reader assumption: comfortable with basic TypeScript syntax, new to schema and compiler concepts, and benefits from a system overview followed by a worked example.
+1. Runtime input has a representation, value kinds, and a source with a particular trust level.
+2. A boundary defines conditions that input must satisfy before downstream code may rely on it.
+3. A responsible component evaluates those conditions against the real input.
+4. Evaluation produces an accepted value, rejection, or structured diagnostics.
+5. Later stages may perform different checks because structural acceptance does not prove every domain invariant.
 
-Bad:
+Do not teach every step automatically. Expand only the steps marked `bridge` or `foundation` for this reader and this project.
 
-> The user is junior and weak at architecture.
+## Allocate Explanation Depth
 
-Keep the assumption inside an existing learning guide section unless the repository already has a dedicated audience document. Do not create extra files solely to store calibration.
+Use four local depth choices:
 
-## Recalibrate Quietly
+- **Name only:** the concept is owned and incidental.
+- **Inline bridge:** define its role here and distinguish it from a nearby concept.
+- **Full concept unit:** explain what, why, general mechanism, project use, prerequisites, example, and boundary.
+- **Linked foundation:** the concept is important but would derail the current chapter; provide a short bridge and link to a dedicated explanation.
 
-Treat later questions, corrections, and demonstrated fluency as better evidence than the initial answers. Adjust future detail without repeatedly announcing a new assessment. Ask again only after a major domain change or when the current explanation style clearly fails.
+Do not equate plain language with low expertise. Experts also benefit from explicit actors, causal steps, project-specific deviations, and precise boundaries; they simply need less foundational unpacking.
+
+## Recalibrate from the Draft
+
+Treat the guide itself as a diagnostic surface. Recalibrate when:
+
+- one section assumes knowledge that an earlier section explained as unfamiliar;
+- a definition introduces two or more undefined terms;
+- an example can be followed syntactically but not causally;
+- the reader asks a question that reveals a missing relationship rather than a missing fact;
+- a later correction demonstrates that an earlier bridge is unnecessary or inaccurate;
+- a domain change introduces a new prerequisite graph.
+
+Adjust the affected concept and its dependents, not the entire document. Keep the voice and terminology consistent after the change.
+
+Recalibrate at meaningful transitions rather than after every paragraph. Useful checkpoints include the first complete concept unit, the first end-to-end representative trace, a major domain or architecture boundary, or direct reader feedback that reveals a missing relationship. Compare old evidence, new evidence, and the resulting document change; do not rewrite the whole reader model from one isolated reaction.
+
+Calibration is sufficient when the reader outcome is clear, each consequential concept has a provisional prerequisite depth, the first complete section demonstrates an appropriate density and terminology style, and no available evidence contradicts those assumptions. At that point, stop asking and write. Reopen only the affected concept when later evidence creates a real mismatch.
+
+## Privacy and Persistence
+
+Persist only an anonymous reader assumption when it materially helps maintain the shared document. Never store raw answers, ability judgments, sensitive data, or conversational speculation. Later demonstrated behavior is better evidence than an early assumption; update the document need quietly.
