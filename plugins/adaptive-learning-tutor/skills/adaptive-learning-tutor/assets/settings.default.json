@@ -1,0 +1,11 @@
+{
+  "package_version": "0.3.0",
+  "approval_mode": "preview",
+  "language": "ko",
+  "instruction_mode": "read_only",
+  "continuity": "on_request",
+  "persistent_storage": false,
+  "require_artifact": false,
+  "require_fixed_length": false,
+  "source": "package_defaults_not_learner_evidence"
+}

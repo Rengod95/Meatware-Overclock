@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.3.0",
+  "example": true,
+  "plan": {
+    "id": "example.single",
+    "revision": 1,
+    "entrypoints": [
+      "concept"
+    ],
+    "question": "가상 규칙에서 현재 값과 과거 기록은 어떻게 다른가?",
+    "scope": "single",
+    "approval_mode": "preview",
+    "instruction_mode": "read_only",
+    "user_request_locator": null,
+    "materials": [
+      {
+        "id": "m01",
+        "title": "가상 개념 설명",
+        "path": null,
+        "question": "현재 값과 과거 기록의 차이",
+        "entry": [],
+        "exit": "조건을 바꾼 사례로 두 값을 구분하는 설명 제공",
+        "bridge": null,
+        "source_refs": []
+      }
+    ]
+  },
+  "approval": null,
+  "reviews": []
+}

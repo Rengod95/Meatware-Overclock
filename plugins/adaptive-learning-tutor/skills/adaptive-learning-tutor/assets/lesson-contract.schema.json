@@ -1,0 +1,482 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Adaptive Learning Tutor optional lesson contract",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.3.0",
+      "type": "string"
+    },
+    "example": {
+      "type": "boolean"
+    },
+    "plan": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "entrypoints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "concept",
+              "deep_dive",
+              "domain",
+              "debug",
+              "artifact",
+              "repair"
+            ]
+          },
+          "minItems": 1
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "single",
+            "series"
+          ]
+        },
+        "approval_mode": {
+          "type": "string",
+          "enum": [
+            "adaptive",
+            "preview"
+          ]
+        },
+        "instruction_mode": {
+          "type": "string",
+          "enum": [
+            "read_only",
+            "optional_check"
+          ]
+        },
+        "user_request_locator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "materials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "question": {
+                "type": "string",
+                "minLength": 1
+              },
+              "entry": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0
+              },
+              "exit": {
+                "type": "string",
+                "minLength": 1
+              },
+              "bridge": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "path",
+              "question",
+              "entry",
+              "exit",
+              "bridge",
+              "source_refs"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "entrypoints",
+        "question",
+        "scope",
+        "approval_mode",
+        "instruction_mode",
+        "user_request_locator",
+        "materials"
+      ],
+      "additionalProperties": false
+    },
+    "approval": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "plan_approval",
+                "one_off_direct"
+              ]
+            },
+            "user_message_locator": {
+              "type": "string",
+              "minLength": 1
+            },
+            "plan_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "kind",
+            "user_message_locator",
+            "plan_sha256"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "material_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "checks": {
+            "type": "object",
+            "properties": {
+              "scope": {
+                "type": "object",
+                "properties": {
+                  "verdict": {
+                    "type": "string",
+                    "enum": [
+                      "pass",
+                      "partial",
+                      "fail",
+                      "not_assessed",
+                      "not_applicable"
+                    ]
+                  },
+                  "location": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "verdict",
+                  "location",
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "facts": {
+                "type": "object",
+                "properties": {
+                  "verdict": {
+                    "type": "string",
+                    "enum": [
+                      "pass",
+                      "partial",
+                      "fail",
+                      "not_assessed",
+                      "not_applicable"
+                    ]
+                  },
+                  "location": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "verdict",
+                  "location",
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "learner_evidence": {
+                "type": "object",
+                "properties": {
+                  "verdict": {
+                    "type": "string",
+                    "enum": [
+                      "pass",
+                      "partial",
+                      "fail",
+                      "not_assessed",
+                      "not_applicable"
+                    ]
+                  },
+                  "location": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "verdict",
+                  "location",
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "connections": {
+                "type": "object",
+                "properties": {
+                  "verdict": {
+                    "type": "string",
+                    "enum": [
+                      "pass",
+                      "partial",
+                      "fail",
+                      "not_assessed",
+                      "not_applicable"
+                    ]
+                  },
+                  "location": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "verdict",
+                  "location",
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "meaning": {
+                "type": "object",
+                "properties": {
+                  "verdict": {
+                    "type": "string",
+                    "enum": [
+                      "pass",
+                      "partial",
+                      "fail",
+                      "not_assessed",
+                      "not_applicable"
+                    ]
+                  },
+                  "location": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "verdict",
+                  "location",
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "boundaries": {
+                "type": "object",
+                "properties": {
+                  "verdict": {
+                    "type": "string",
+                    "enum": [
+                      "pass",
+                      "partial",
+                      "fail",
+                      "not_assessed",
+                      "not_applicable"
+                    ]
+                  },
+                  "location": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "verdict",
+                  "location",
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "artifact_mapping": {
+                "type": "object",
+                "properties": {
+                  "verdict": {
+                    "type": "string",
+                    "enum": [
+                      "pass",
+                      "partial",
+                      "fail",
+                      "not_assessed",
+                      "not_applicable"
+                    ]
+                  },
+                  "location": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "verdict",
+                  "location",
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "interaction": {
+                "type": "object",
+                "properties": {
+                  "verdict": {
+                    "type": "string",
+                    "enum": [
+                      "pass",
+                      "partial",
+                      "fail",
+                      "not_assessed",
+                      "not_applicable"
+                    ]
+                  },
+                  "location": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "verdict",
+                  "location",
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "scope",
+              "facts",
+              "learner_evidence",
+              "connections",
+              "meaning",
+              "boundaries",
+              "artifact_mapping",
+              "interaction"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "material_id",
+          "path",
+          "sha256",
+          "checks"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "example",
+    "plan",
+    "approval",
+    "reviews"
+  ],
+  "additionalProperties": false
+}

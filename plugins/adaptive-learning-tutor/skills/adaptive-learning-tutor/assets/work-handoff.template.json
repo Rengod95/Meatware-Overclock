@@ -1,0 +1,10 @@
+{
+  "example": true,
+  "artifact_refs": [],
+  "completed_scope": "",
+  "verification": [],
+  "decisions": [],
+  "unknowns": [],
+  "learning_candidates": [],
+  "note": "각 verification에는 kind, locator, actual_result, executed 여부를 실제 근거에 맞게 기록. 후보는 사용자 지식 증거가 아님."
+}

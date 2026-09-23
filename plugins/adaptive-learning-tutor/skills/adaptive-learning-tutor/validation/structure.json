@@ -1,0 +1,12 @@
+{
+  "status": "structural_checks_passed",
+  "skill": "adaptive-learning-tutor",
+  "version": "0.3.0",
+  "skill_lines": 79,
+  "markdown_files": 23,
+  "json_files": 10,
+  "relative_links": 23,
+  "behavioral_cases_designed": 26,
+  "checksum_records_verified": null,
+  "limits": "Not an official host certification, semantic evaluation, or learning-outcome test."
+}

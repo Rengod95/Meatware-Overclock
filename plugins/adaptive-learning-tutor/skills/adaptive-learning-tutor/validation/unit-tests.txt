@@ -1,0 +1,98 @@
+Date: 2026-09-23
+Command: python3 -m unittest discover -s tests -v
+Environment: Linux / Python 3.13.5
+Exit: 0
+
+test_approval_locator_nonblank (test_contract.ContractTests.test_approval_locator_nonblank) ... ok
+test_artifact_mapping_required_for_artifact_entry (test_contract.ContractTests.test_artifact_mapping_required_for_artifact_entry) ... ok
+test_changed_file_invalidates_review (test_contract.ContractTests.test_changed_file_invalidates_review) ... ok
+test_chat_has_no_file_release (test_contract.ContractTests.test_chat_has_no_file_release) ... ok
+test_digest_ignores_dictionary_order (test_contract.ContractTests.test_digest_ignores_dictionary_order) ... ok
+test_duplicate_material_id_rejected (test_contract.ContractTests.test_duplicate_material_id_rejected) ... ok
+test_extra_mastery_key_rejected (test_contract.ContractTests.test_extra_mastery_key_rejected) ... ok
+test_missing_location_fails (test_contract.ContractTests.test_missing_location_fails) ... ok
+test_missing_review_fails (test_contract.ContractTests.test_missing_review_fails) ... ok
+test_multiple_entrypoints_supported (test_contract.ContractTests.test_multiple_entrypoints_supported) ... ok
+test_no_artifact_needed_for_concept (test_contract.ContractTests.test_no_artifact_needed_for_concept) ... ok
+test_nonapplicable_facts_cannot_bypass_review (test_contract.ContractTests.test_nonapplicable_facts_cannot_bypass_review) ... ok
+test_nonapplicable_mapping_allowed_without_artifact (test_contract.ContractTests.test_nonapplicable_mapping_allowed_without_artifact) ... ok
+test_partial_review_blocks (test_contract.ContractTests.test_partial_review_blocks) ... ok
+test_path_traversal_rejected (test_contract.ContractTests.test_path_traversal_rejected) ... ok
+test_plan_edit_invalidates_approval (test_contract.ContractTests.test_plan_edit_invalidates_approval) ... ok
+test_preview_requires_approval (test_contract.ContractTests.test_preview_requires_approval) ... ok
+test_request_locator_required (test_contract.ContractTests.test_request_locator_required) ... ok
+test_reviewed_file_releases_structurally (test_contract.ContractTests.test_reviewed_file_releases_structurally) ... ok
+test_series_requires_approval_even_adaptive (test_contract.ContractTests.test_series_requires_approval_even_adaptive) ... ok
+test_single_scope_rejects_two_materials (test_contract.ContractTests.test_single_scope_rejects_two_materials) ... ok
+test_symlink_material_rejected (test_contract.ContractTests.test_symlink_material_rejected) ... ok
+test_template_lints_but_is_not_approval (test_contract.ContractTests.test_template_lints_but_is_not_approval) ... ok
+test_unknown_entrypoint_rejected (test_contract.ContractTests.test_unknown_entrypoint_rejected) ... ok
+test_apply_copies_identical_bytes (test_install.InstallTests.test_apply_copies_identical_bytes) ... ok
+test_claude_user_path (test_install.InstallTests.test_claude_user_path) ... ok
+test_codex_user_path (test_install.InstallTests.test_codex_user_path) ... ok
+test_custom_path_is_parent (test_install.InstallTests.test_custom_path_is_parent) ... ok
+test_custom_requires_path (test_install.InstallTests.test_custom_requires_path) ... ok
+test_different_existing_directory_not_overwritten (test_install.InstallTests.test_different_existing_directory_not_overwritten) ... ok
+test_dry_run_creates_nothing (test_install.InstallTests.test_dry_run_creates_nothing) ... ok
+test_existing_file_not_overwritten (test_install.InstallTests.test_existing_file_not_overwritten) ... ok
+test_existing_lock_blocks_without_destination (test_install.InstallTests.test_existing_lock_blocks_without_destination) ... ok
+test_gemini_user_path (test_install.InstallTests.test_gemini_user_path) ... ok
+test_nested_destination_rejected (test_install.InstallTests.test_nested_destination_rejected) ... ok
+test_no_implicit_project_from_cwd (test_install.InstallTests.test_no_implicit_project_from_cwd) ... ok
+test_pi_shared_path (test_install.InstallTests.test_pi_shared_path) ... ok
+test_project_path (test_install.InstallTests.test_project_path) ... ok
+test_project_requires_explicit_directory (test_install.InstallTests.test_project_requires_explicit_directory) ... ok
+test_pycache_is_not_packaged (test_install.InstallTests.test_pycache_is_not_packaged) ... ok
+test_second_install_is_idempotent (test_install.InstallTests.test_second_install_is_idempotent) ... ok
+test_source_needs_entrypoint (test_install.InstallTests.test_source_needs_entrypoint) ... ok
+test_symlink_destination_parent_rejected (test_install.InstallTests.test_symlink_destination_parent_rejected) ... ok
+test_symlink_source_file_rejected (test_install.InstallTests.test_symlink_source_file_rejected) ... ok
+test_code_links_not_scanned (test_package.PackageTests.test_code_links_not_scanned) ... ok
+test_default_preserves_preview_preference (test_package.PackageTests.test_default_preserves_preview_preference) ... ok
+test_package_structure (test_package.PackageTests.test_package_structure) ... ok
+test_standalone_preserves_policy_without_file_dependency (test_package.PackageTests.test_standalone_preserves_policy_without_file_dependency) ... ok
+test_standalone_synchronized (test_package.PackageTests.test_standalone_synchronized) ... ok
+test_unclosed_fence_rejected (test_package.PackageTests.test_unclosed_fence_rejected) ... ok
+test_yaml_preserves_booleans (test_package.PackageTests.test_yaml_preserves_booleans) ... ok
+test_yaml_rejects_duplicate_key (test_package.PackageTests.test_yaml_rejects_duplicate_key) ... ok
+test_yaml_rejects_executable_tags (test_package.PackageTests.test_yaml_rejects_executable_tags) ... ok
+test_apply_increments_revision (test_state.PersistenceTests.test_apply_increments_revision) ... ok
+test_authorization_cannot_be_changed_by_commit (test_state.PersistenceTests.test_authorization_cannot_be_changed_by_commit) ... ok
+test_candidate_revision_must_match (test_state.PersistenceTests.test_candidate_revision_must_match) ... ok
+test_dry_run_does_not_write (test_state.PersistenceTests.test_dry_run_does_not_write) ... ok
+test_existing_lock_blocks_apply (test_state.PersistenceTests.test_existing_lock_blocks_apply) ... ok
+test_existing_workspace_not_overwritten (test_state.PersistenceTests.test_existing_workspace_not_overwritten) ... ok
+test_no_consent_creates_nothing (test_state.PersistenceTests.test_no_consent_creates_nothing) ... ok
+test_nonfinite_json_number_rejected (test_state.PersistenceTests.test_nonfinite_json_number_rejected) ... ok
+test_removal_requires_additional_flag (test_state.PersistenceTests.test_removal_requires_additional_flag) ... ok
+test_stale_revision_cannot_overwrite (test_state.PersistenceTests.test_stale_revision_cannot_overwrite) ... ok
+test_ai_artifact_cannot_support_learner_claim (test_state.StateContractTests.test_ai_artifact_cannot_support_learner_claim) ... ok
+test_assessment_requires_limits (test_state.StateContractTests.test_assessment_requires_limits) ... ok
+test_dangling_evidence_reference_is_rejected (test_state.StateContractTests.test_dangling_evidence_reference_is_rejected) ... ok
+test_delivery_does_not_promote_knowledge (test_state.StateContractTests.test_delivery_does_not_promote_knowledge) ... ok
+test_duplicate_node_id_is_rejected (test_state.StateContractTests.test_duplicate_node_id_is_rejected) ... ok
+test_evidence_requires_back_reference (test_state.StateContractTests.test_evidence_requires_back_reference) ... ok
+test_helped_response_can_support_limited_context (test_state.StateContractTests.test_helped_response_can_support_limited_context) ... ok
+test_initial_has_preferences_but_no_knowledge_claims (test_state.StateContractTests.test_initial_has_preferences_but_no_knowledge_claims) ... ok
+test_material_path_escape_rejected (test_state.StateContractTests.test_material_path_escape_rejected) ... ok
+test_opened_source_requires_time (test_state.StateContractTests.test_opened_source_requires_time) ... ok
+test_prerequisite_cycle_rejected (test_state.StateContractTests.test_prerequisite_cycle_rejected) ... ok
+test_read_only_rejects_mandatory_exercises (test_state.StateContractTests.test_read_only_rejects_mandatory_exercises) ... ok
+test_read_report_requires_locator (test_state.StateContractTests.test_read_report_requires_locator) ... ok
+test_reference_access_does_not_equal_task_help (test_state.StateContractTests.test_reference_access_does_not_equal_task_help) ... ok
+test_revision_boolean_is_not_integer (test_state.StateContractTests.test_revision_boolean_is_not_integer) ... ok
+test_self_report_cannot_be_scored_as_correct (test_state.StateContractTests.test_self_report_cannot_be_scored_as_correct) ... ok
+test_self_report_cannot_support_ability_claim (test_state.StateContractTests.test_self_report_cannot_support_ability_claim) ... ok
+test_solution_seen_cannot_be_unassisted (test_state.StateContractTests.test_solution_seen_cannot_be_unassisted) ... ok
+test_source_version_change_requires_recheck (test_state.StateContractTests.test_source_version_change_requires_recheck) ... ok
+test_support_claim_requires_actual_response (test_state.StateContractTests.test_support_claim_requires_actual_response) ... ok
+test_supported_context_cannot_generalize_to_other_context (test_state.StateContractTests.test_supported_context_cannot_generalize_to_other_context) ... ok
+test_timestamp_requires_timezone (test_state.StateContractTests.test_timestamp_requires_timezone) ... ok
+test_undeclared_mastery_score_is_rejected (test_state.StateContractTests.test_undeclared_mastery_score_is_rejected) ... ok
+test_unknown_ai_help_cannot_be_unassisted (test_state.StateContractTests.test_unknown_ai_help_cannot_be_unassisted) ... ok
+test_unknown_status_mastered_is_rejected (test_state.StateContractTests.test_unknown_status_mastered_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 88 tests in 0.063s
+
+OK

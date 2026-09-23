@@ -1,0 +1,19 @@
+{
+  "as_of": "2026-09-23",
+  "original_archives": [
+    {
+      "name": "learning-design-orchestrator.zip",
+      "sha256": "ee507f2f5752e2147107586a17ba7232575168e7affc05095a8fb393bc1b2f7f"
+    },
+    {
+      "name": "sustainable-learning-tutor-v0.1.0.zip",
+      "sha256": "283873409d834ca853fe69e4c6a65a17add72777fb752238e53e2f4a0b3d320f"
+    }
+  ],
+  "copied_components": [
+    "SLT scripts/tutor_state.py (module description adapted)",
+    "SLT assets/state.schema.json (format retained)",
+    "SLT tests/test_state.py (inherited regression tests)"
+  ],
+  "previous_generated_files": "Not accessible in this runtime; integrated requirements from conversation, not claimed as byte-for-byte merge."
+}
