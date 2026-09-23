@@ -1,0 +1,30 @@
+{
+  "name": "adaptive-learning-tutor",
+  "version": "0.3.1",
+  "description": "Adaptive reading-first learning from concepts, unfamiliar domains, debugging, and existing artifacts. No mandatory server or account connection.",
+  "author": {
+    "name": "Rengod95"
+  },
+  "repository": "https://github.com/Rengod95/Meatware-Overclock",
+  "keywords": [
+    "learning",
+    "tutor",
+    "concepts",
+    "deep-dive",
+    "debugging",
+    "korean"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Adaptive Learning Tutor",
+    "shortDescription": "질문과 맥락에 맞추는 읽기 중심 학습 튜터",
+    "longDescription": "개념·응용, 독립 딥다이브, 분야 입문, 디버깅, 산출물 후학습과 국소 이해 복구를 지원합니다. 길이와 깊이를 구분하고, 제작 전 확인 선호를 보존합니다. 장기 저장은 기본 비활성입니다.",
+    "developerName": "Rengod95",
+    "category": "Productivity",
+    "defaultPrompt": [
+      "Adaptive Learning Tutor로 DDD 엔티티의 동일성과 값의 차이를 배우고 싶어. 프로젝트와 연결하지 말고 먼저 짧은 제작안을 보여 줘.",
+      "Adaptive Learning Tutor로 이 오류의 안전한 확인 방법과 원인 후보를 설명해 줘. 원인을 확인하지 못했으면 가설이라고 표시해 줘.",
+      "Adaptive Learning Tutor로 이 분야의 용어와 관점부터 조망해 줘. 전체 교재나 장기 저장은 시작하지 마."
+    ]
+  }
+}

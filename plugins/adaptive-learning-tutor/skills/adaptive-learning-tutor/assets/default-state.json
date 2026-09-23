@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1.0",
+  "revision": 0,
+  "updated_at": null,
+  "authorization": {
+    "persistent_storage": false,
+    "consent_record": null
+  },
+  "profile": {
+    "language": "ko",
+    "instruction_mode": "read_only",
+    "long_term_goal": "미설정: 요청에 따라 독립 탐구·일회성 이해·장기 경로를 선택한다.",
+    "domain": null,
+    "self_reports": [],
+    "preferences": {
+      "mandatory_exercises": false,
+      "visible_pedagogy_labels": false,
+      "continuous_prose": true,
+      "complete_worked_examples": true,
+      "contrast_and_boundary_cases": true,
+      "meaning_preserving_korean_editing": true,
+      "long_term_foundations": false,
+      "artifact_learning_separation": true,
+      "diagnostics_only_with_permission": true
+    },
+    "provenance": []
+  },
+  "curriculum": {
+    "nodes": [],
+    "edges": [],
+    "reading_paths": [],
+    "glossary": [],
+    "foundations_backlog": [],
+    "selection_notes": []
+  },
+  "claims": [],
+  "evidence": [],
+  "sources": [],
+  "artifacts": [],
+  "materials": [],
+  "deliveries": [],
+  "last_session": null
+}

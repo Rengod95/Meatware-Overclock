@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+.state.lock
+*.tmp
+.DS_Store

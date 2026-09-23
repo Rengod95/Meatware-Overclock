@@ -1,0 +1,173 @@
+{
+  "date": "2026-09-23",
+  "python": "3.13.5",
+  "platform": "linux",
+  "scope": "Synthetic temporary local directories; no real host process or learner state",
+  "checks": [
+    {
+      "check": "full-package installer dry-run",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "codex simulated-home install",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "codex copied-package structure",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "claude simulated-home install",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "claude copied-package structure",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "gemini simulated-home install",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "gemini copied-package structure",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "pi simulated-home install",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "pi copied-package structure",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "identical install is idempotent",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "explicit-project install",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "custom-parent install",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "different installation is not overwritten",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "status": "passed"
+    },
+    {
+      "check": "state-init without consent rejected",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "status": "passed"
+    },
+    {
+      "check": "synthetic consent init",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "synthetic state check",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "state commit defaults no-write",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "state commit explicit apply",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "stale revision commit rejected",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "status": "passed"
+    },
+    {
+      "check": "contract template lint",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "synthetic template cannot authorize production",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "status": "passed"
+    },
+    {
+      "check": "standalone sync",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "status": "passed"
+    },
+    {
+      "check": "SKILL frontmatter independently parsed by PyYAML",
+      "status": "passed"
+    },
+    {
+      "check": "Codex metadata independently parsed by PyYAML",
+      "status": "passed"
+    },
+    {
+      "check": "state.schema.json Draft202012 schema/default validation",
+      "status": "passed"
+    },
+    {
+      "check": "lesson-contract.schema.json Draft202012 schema/default validation",
+      "status": "passed"
+    }
+  ],
+  "checks_passed": 26,
+  "host_binaries": {
+    "codex": null,
+    "claude": null,
+    "gemini": null,
+    "pi": null
+  },
+  "optional_development_libraries": {
+    "PyYAML": "6.0.3",
+    "jsonschema": "4.26.0"
+  },
+  "limitations": [
+    "No actual Codex, Claude Code, Gemini CLI, or Pi model session",
+    "No real user approval or learning evidence created",
+    "No learning-effect or behavior evaluation executed",
+    "Python 3.10+ syntax target; runtime tested only on listed interpreter"
+  ]
+}
